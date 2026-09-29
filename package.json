@@ -1,0 +1,13 @@
+{
+  "name": "fiverr-puppeteer",
+  "version": "1.0.0",
+  "description": "Fiverr automation using Puppeteer",
+  "main": "fiverr.js",
+  "scripts": {
+    "start": "node fiverr.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.4",
+    "puppeteer": "^24.43.1"
+  }
+}

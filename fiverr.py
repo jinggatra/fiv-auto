@@ -1,5 +1,6 @@
 import os
 import time
+import getpass
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -39,8 +40,12 @@ def sign_in(driver, wait, email=None, password=None):
     email = email or os.getenv("FIVERR_EMAIL")
     password = password or os.getenv("FIVERR_PASSWORD")
 
+    if not email:
+        email = input("Fiverr email/username: ").strip()
+    if not password:
+        password = getpass.getpass("Fiverr password: ")
     if not email or not password:
-        raise ValueError("Set FIVERR_EMAIL and FIVERR_PASSWORD in environment variables or pass email/password to sign_in().")
+        raise ValueError("Fiverr email and password are required.")
 
     try:
         sign_in_button = None

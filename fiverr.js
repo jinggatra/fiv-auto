@@ -54,7 +54,9 @@ async function clickText(page, texts, timeout = 20000) {
         const xpath = `//*[contains(normalize-space(.), '${escaped}')]`;
 
         try {
-            const handles = await page.$x(xpath);
+            const handles = await page.$$(
+                `::-p-xpath(${xpath})`
+            );
 
             for (const handle of handles) {
                 const visible = await handle.evaluate((el) => {
@@ -97,7 +99,7 @@ async function signIn(
         // Sign in / Login button.
         const signInClicked = await clickText(
             page,
-            ["Sign in", "Log in", "Login"],
+            ["Sign In", "Log In", "Login"],
             10000
         );
 
@@ -149,7 +151,7 @@ async function signIn(
         // Submit.
         const submitted = await clickText(
             page,
-            ["Sign in", "Log in", "Continue"],
+            ["Sign In", "Log In", "Continue"],
             10000
         );
 
